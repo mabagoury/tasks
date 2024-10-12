@@ -32,6 +32,17 @@ paths:
                                         type: number
         post:
             summary: add task
+            requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        description:
+                          type: string
             responses:
               '201':
                 description: success
@@ -55,6 +66,12 @@ paths:
     /tasks/{id}:
         get:
             summary: get task
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
             responses:
                 '200':
                     description: success
@@ -77,6 +94,23 @@ paths:
                                         type: number
         put:
             summary: update task
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        description:
+                          type: string
             responses:
                 '200':
                     description: success
@@ -99,12 +133,29 @@ paths:
                                         type: number
         delete:
             summary: delete task
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
             responses:
                 '204':
                     description: success
     /users/login:
         post:
             summary: login
+            requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        username:
+                          type: string
+                        password:
+                          type: string
             responses:
                 '200':
                     description: success
@@ -127,6 +178,17 @@ paths:
     /users/register:
         post:
             summary: register
+            requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        username:
+                          type: string
+                        password:
+                          type: string
             responses:
                 '200':
                     description: success
@@ -140,6 +202,12 @@ paths:
     /users/{id}/tasks:
         get:
             summary: get user tasks
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
             responses:
               '200':
                 description: success
@@ -160,3 +228,13 @@ paths:
                                     type: string
                                 assignedAt:
                                     type: number    
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
