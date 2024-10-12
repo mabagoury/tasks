@@ -34,16 +34,22 @@
 			"name": "get_task",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJNYWhtb3VkIiwiaWF0IjoxNzI4NzMyMzQ0fQ.zPbmBRRtWRcOUwlgAVIuXGbUp733j6tKOnBbvzrqgnE",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:3000/tasks/1",
+					"raw": "localhost:3000/tasks/2",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"tasks",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -83,7 +89,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"detail\": \"New detail\"\n}",
+					"raw": "{\n    \"title\": \"New detail\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -109,6 +115,10 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
 				"url": {
 					"raw": "localhost:3000/tasks/1",
 					"host": [
@@ -183,7 +193,25 @@
 			"name": "get_user_tasks",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJNYWhtb3VkIiwiaWF0IjoxNzI4NzMyMzQ0fQ.zPbmBRRtWRcOUwlgAVIuXGbUp733j6tKOnBbvzrqgnE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/users/1/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1",
+						"tasks"
+					]
+				}
 			},
 			"response": []
 		}
