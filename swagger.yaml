@@ -7,18 +7,156 @@ info:
 servers:
     - url: http://localhost:3000
 paths:
-    /:
+    /tasks:
         get:
-            summary: Root
-            description: Root
+            summary: get all tasks
             responses:
                 '200':
-                    description: Root
+                    description: success
                     content:
                         application/json:
                             schema:
                                 type: object
                                 properties:
-                                    message:
+                                    id:
+                                        type: number
+                                    title:
                                         type: string
-                                        example: Hello World!
+                                    description:
+                                        type: string
+                                    createdAt:
+                                        type: string
+                                    updatedAt:
+                                        type: string
+                                    assignedAt:
+                                        type: number
+        post:
+            summary: add task
+            responses:
+              '201':
+                description: success
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: number
+                                title:
+                                    type: string
+                                description:
+                                    type: string
+                                createdAt:
+                                    type: string
+                                updatedAt:
+                                    type: string
+                                assignedAt:
+                                    type: number
+    /tasks/{id}:
+        get:
+            summary: get task
+            responses:
+                '200':
+                    description: success
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: number
+                                    title:
+                                        type: string
+                                    description:
+                                        type: string
+                                    createdAt:
+                                        type: string
+                                    updatedAt:
+                                        type: string
+                                    assignedAt:
+                                        type: number
+        put:
+            summary: update task
+            responses:
+                '200':
+                    description: success
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: number
+                                    title:
+                                        type: string
+                                    description:
+                                        type: string
+                                    createdAt:
+                                        type: string
+                                    updatedAt:
+                                        type: string
+                                    assignedAt:
+                                        type: number
+        delete:
+            summary: delete task
+            responses:
+                '204':
+                    description: success
+    /users/login:
+        post:
+            summary: login
+            responses:
+                '200':
+                    description: success
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    token:
+                                        type: string
+                '401':
+                    description: unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+    /users/register:
+        post:
+            summary: register
+            responses:
+                '200':
+                    description: success
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    token:
+                                        type: string
+    /users/{id}/tasks:
+        get:
+            summary: get user tasks
+            responses:
+              '200':
+                description: success
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: number
+                                title:
+                                    type: string
+                                description:
+                                    type: string
+                                createdAt:
+                                    type: string
+                                updatedAt:
+                                    type: string
+                                assignedAt:
+                                    type: number    
